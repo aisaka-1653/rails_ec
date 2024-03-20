@@ -1,0 +1,12 @@
+ja:
+  application:
+    home: ホーム
+    about: サイト概要
+    menu: メニュー
+    products: 商品一覧
+    popular_products: 人気商品
+    new_arrivals: 新着商品
+    cart: カート
+  products:
+    index:
+      add_to_cart: カートに追加
