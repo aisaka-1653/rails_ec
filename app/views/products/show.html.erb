@@ -2,8 +2,7 @@
   <div class="container px-4 px-lg-5 my-5">
     <div class="row gx-4 gx-lg-5 align-items-center">
       <div class="col-md-6">
-        <%= image_tag @product.image, class: "card-img-top mb-5 mb-md-0", alt: "" %>
-        <%# <img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /> %>
+        <%= image_tag @product.image, class: "card-img-top mb-5 mb-md-0 detail-image", alt: "" %>
       </div>
       <div class="col-md-6">
         <h1 class="display-5 fw-bolder"><%= @product.name %></h1>
@@ -25,6 +24,8 @@
 <section class="py-5 bg-light">
   <div class="container px-4 px-lg-5 mt-5">
     <h2 class="fw-bolder mb-4">Related products</h2>
-    <%= render partial: 'product_item', locals: { products: @products } %>
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+      <%= render @products %>
+    </div>
   </div>
 </section>
