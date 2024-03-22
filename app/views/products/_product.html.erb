@@ -1,7 +1,7 @@
 <div class="col mb-5">
   <%= link_to product, class: "text-decoration-none text-reset" do %>
     <div class="card h-100">
-      <%= image_tag product.image, class: "card-img-top product-image", alt: "" %>
+      <%= image_tag product.image, class: "card-img-top product-image product-thumbnail" if product.image.attached? %>
       <div class="card-body p-4">
         <div class="text-center">
           <h5 class="fw-bolder"><%= product.name %></h5>
