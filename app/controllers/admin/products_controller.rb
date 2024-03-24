@@ -24,8 +24,11 @@ class Admin::ProductsController < ApplicationController
   end
 
   def update
-    @product.update!(product_params)
-    redirect_to admin_products_url, notice: "｢#{@product.name}｣を更新しました｡"
+    if @product.update(product_params)
+      redirect_to admin_products_url, notice: "｢#{@product.name}｣を更新しました｡"
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy

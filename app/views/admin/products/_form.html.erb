@@ -1,0 +1,36 @@
+<div class="container px-4 px-lg-5 my-4">
+  <% if product.errors.present? %>
+    <ul id="error_explanation" class="alert alert-danger mb-4">
+      <% product.errors.full_messages.each do |message| %>
+        <div class="px-3">
+          <li><%= message %></li>
+        </div>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with model: [:admin, product] do |f| %>
+    <div class="form_group mb-3">
+      <%= f.label :name, class: "form-label" %>
+      <%= f.text_field :name, class: "form-control", id: "product_name" %>
+    </div>
+    <div class="form_group mb-3">
+      <%= f.label :content, class: "form-label" %>
+      <%= f.text_area :content, class: "form-control", id: "product_content" %>
+    </div>
+    <div class="row mb-3">
+      <div class="form_group col-sm-3">
+        <%= f.label :price, class: "form-label" %>
+        <%= f.text_field :price, class: "form-control", id: "product_price" %>
+      </div>
+    </div>
+    <div class="form_group mb-5">
+      <%= f.label :image, class: "form-label" %>
+      <%= f.file_field :image, class: "form-control", id: "product_image" %>
+    </div>
+    <div class="d-flex gap-4">
+      <%= f.submit class: "btn btn-outline-primary" %>
+      <%= link_to "キャンセル", admin_products_path, class: "btn btn-outline-secondary" %>
+    </div>
+  <% end %>
+</div>
