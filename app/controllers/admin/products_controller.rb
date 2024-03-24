@@ -2,6 +2,7 @@ class Admin::ProductsController < ApplicationController
   before_action :basic_auth
 
   def index
+    @products = Product.order(:id)
   end
 
   def new
