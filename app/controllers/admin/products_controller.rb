@@ -1,5 +1,6 @@
 class Admin::ProductsController < ApplicationController
   before_action :basic_auth
+  before_action :set_product, only: [:edit, :update, :destroy]
 
   def index
     @products = Product.order(:id)
@@ -10,7 +11,6 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def create
@@ -24,13 +24,11 @@ class Admin::ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.find(params[:id])
     @product.update!(product_params)
     redirect_to admin_products_url, notice: "｢#{@product.name}｣を更新しました｡"
   end
 
   def destroy
-    @product = Product.find(params[:id])
     @product.destroy
     redirect_to admin_products_url, notice: "｢#{@product.name}｣を削除しました｡"
   end
@@ -45,5 +43,9 @@ class Admin::ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :content, :price, :image)
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 end
