@@ -6,13 +6,6 @@
   created_at { label: "datatime, not null"}
   updated_at { label: "datatime, not null"}
 
-[stocks] {bgcolor: "#baf5e3"}
-  *id {label: "bigint, not null"}
-  product_id {label: "bigint, not null, FK(products)"}
-  stock {label: "bigint, not null"}
-  created_at { label: "datatime, not null"}
-  updated_at { label: "datatime, not null"}
-
 [checkouts] {bgcolor: "#baf5e3"}
   *id {label: "bigint, not null"}
   first_name {label: "varchar(20), not null"}
@@ -59,6 +52,5 @@
 # 1 or more      +
 
 products 1--* `purchased_items`
-products 1--* `stocks`
 checkouts 1--1 `orders`
 orders 1--* `purchased_items`
