@@ -15,28 +15,39 @@ ja:
         billing_address: 受取場所
         first_name: 姓
         first_name_hint: 山田
+        first_name_warn: 姓を入力して下さい
         last_name: 名
         last_name_hint: 太郎
+        last_name_warn: 名を入力して下さい
         username: ユーザー名
+        username_warn: ユーザー名を入力して下さい
         email: メールアドレス
+        email_warn: メールアドレスを入力して下さい
         primary_address: 市区町村
         primary_address_hint: 新宿区
+        primary_address_warn: 市区町村を入力して下さい
         secondary_address: 丁目・番地・号
         secondary_address_hint: 西新宿1丁目8-1
+        secondary_address_warn: 丁目・番地・号を入力して下さい
         country: 国
         state: 都道府県
         zip: 郵便番号
         zip_hint: "1600023"
+        zip_warn: 郵便番号を入力して下さい
       card:
         payment: クレジットカード情報
         name_on_card: 名義人
         name_on_card_hint: TARO YAMADA
+        name_on_card_warn: 名義人を入力して下さい
         credit_card_number: カード番号
         credit_card_number_hint: 1111 2222 3333 4444
+        credit_card_number_warn: カード番号を入力して下さい
         expiration: 有効期限
         expiration_hint: MM/YY
+        expiration_warn: 有効期限を入力して下さい
         cvv: CVV
         cvv_hint: "012"
+        cvv_warn: セキュリティコードを入力して下さい
       cart:
         your_cart: カート
         total_price: ご請求額

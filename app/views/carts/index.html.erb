@@ -56,14 +56,14 @@
             <label for="firstName"><%= t ".address.first_name" %></label>
             <input type="text" class="form-control" id="firstName" placeholder="<%= t ".address.first_name_hint" %>" value="" required>
             <div class="invalid-feedback">
-              Valid first name is required.
+              <%= t ".address.first_name_warn" %>
             </div>
           </div>
           <div class="col-md-6 mb-3">
             <label for="lastName"><%= t ".address.last_name" %></label>
             <input type="text" class="form-control" id="lastName" placeholder="<%= t ".address.last_name_hint" %>" value="" required>
             <div class="invalid-feedback">
-              Valid last name is required.
+              <%= t ".address.last_name_warn" %>
             </div>
           </div>
         </div>
@@ -75,15 +75,15 @@
             </div>
             <input type="text" class="form-control" id="username" placeholder="Username" required>
             <div class="invalid-feedback" style="width: 100%;">
-              Your username is required.
+              <%= t ".address.username_warn" %>
             </div>
           </div>
         </div>
         <div class="mb-3">
           <label for="email"><%= t ".address.email" %></label>
-          <input type="email" class="form-control" id="email" placeholder="you@example.com">
+          <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
           <div class="invalid-feedback">
-            Please enter a valid email address for shipping updates.
+            <%= t ".address.email_warn" %>
           </div>
         </div>
         <div class="row">
@@ -91,7 +91,7 @@
             <label for="zip"><%= t ".address.zip" %></label>
             <input type="text" class="form-control" id="zip" placeholder="<%= t ".address.zip_hint" %>" required>
             <div class="invalid-feedback">
-              Zip code required.
+              <%= t ".address.zip_warn" %>
             </div>
           </div>
           <div class="col-md-5 mb-3">
@@ -100,9 +100,6 @@
               <option selected>日本</option>
               <option>United States</option>
             </select>
-            <div class="invalid-feedback">
-              Please select a valid country.
-            </div>
           </div>
           <div class="col-md-4 mb-3">
             <label for="state"><%= t ".address.state" %></label>
@@ -110,21 +107,21 @@
               <option selected>東京</option>
               <option>California</option>
             </select>
-            <div class="invalid-feedback">
-              Please provide a valid state.
-            </div>
           </div>
         </div>
         <div class="mb-3">
           <label for="address"><%= t ".address.primary_address" %></label>
           <input type="text" class="form-control" id="address" placeholder="<%= t ".address.primary_address_hint" %>" required>
           <div class="invalid-feedback">
-            Please enter your shipping address.
+            <%= t ".address.primary_address_warn" %>
           </div>
         </div>
         <div class="mb-3">
           <label for="address2"><%= t ".address.secondary_address" %></label>
-          <input type="text" class="form-control" id="address2" placeholder="<%= t ".address.secondary_address_hint" %>">
+          <input type="text" class="form-control" id="address2" placeholder="<%= t ".address.secondary_address_hint" %>" required>
+          <div class="invalid-feedback">
+            <%= t ".address.secondary_address_warn" %>
+          </div>
         </div>
         <hr class="my-4">
         <h4 class="text-muted mb-3"><%= t ".card.payment" %></h4>
@@ -133,14 +130,14 @@
             <label for="cc-name"><%= t ".card.name_on_card" %></label>
             <input type="text" class="form-control" id="cc-name" placeholder="<%= t ".card.name_on_card_hint" %>" required>
             <div class="invalid-feedback">
-              Name on card is required
+              <%= t ".card.name_on_card_warn" %>
             </div>
           </div>
           <div class="col-md-6 mb-3">
             <label for="cc-number"><%= t ".card.credit_card_number" %></label>
             <input type="text" class="form-control" id="cc-number" placeholder="<%= t ".card.credit_card_number_hint" %>" required>
             <div class="invalid-feedback">
-              Credit card number is required
+              <%= t ".card.credit_card_number_warn" %>
             </div>
           </div>
         </div>
@@ -149,14 +146,14 @@
             <label for="cc-expiration"><%= t ".card.expiration" %></label>
             <input type="text" class="form-control" id="cc-expiration" placeholder="<%= t ".card.expiration_hint" %>" required>
             <div class="invalid-feedback">
-              Expiration date required
+              <%= t ".card.expiration_warn" %>
             </div>
           </div>
           <div class="col-md-3 mb-3">
             <label for="cc-cvv"><%= t ".card.cvv" %></label>
             <input type="text" class="form-control" id="cc-cvv" placeholder="<%= t ".card.cvv_hint" %>" required>
             <div class="invalid-feedback">
-              Security code required
+              <%= t ".card.cvv_warn" %>
             </div>
           </div>
         </div>
@@ -168,3 +165,4 @@
     </div>
   </div>
 </div>
+<div data-controller="cart--form-validation"></div>
