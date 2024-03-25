@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   resources :products, only: %i[index show]
-  resources :carts, only: %i[index create destroy]
+  resources :carts, only: %i[show create destroy]
   namespace :admin do
     resources :products, only: %i[index new edit create update destroy]
   end
