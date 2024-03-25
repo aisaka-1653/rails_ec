@@ -1,4 +1,4 @@
-[products] {bgcolor: "#baf5e3"}
+[products] {bgcolor: "#d2f1f7"}
   *id {label: "bigint, not null"}
   name {label: "varchar(100), not null"}
   content {label: "varchar(1000), not null"}
@@ -6,7 +6,20 @@
   created_at { label: "datatime, not null"}
   updated_at { label: "datatime, not null"}
 
-[checkouts] {bgcolor: "#baf5e3"}
+[carts] {bgcolor: "#d2f7e2"}
+  *id {label: "bigint, not null"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[cart_items] {bgcolor: "#d2f7e2"}
+  *id {label: "bigint, not null"}
+  cart_id {label: "bigint, not null, FK(carts)"}
+  product_id {label: "bigint, not null, FK(products)"}
+  quantity { label: "bigint, not null" }
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[checkouts] {bgcolor: "#ead2f7"}
   *id {label: "bigint, not null"}
   first_name {label: "varchar(20), not null"}
   last_name {label: "varchar(20), not null"}
@@ -24,13 +37,13 @@
   created_at { label: "datatime, not null"}
   updated_at { label: "datatime, not null"}
 
-[orders] {bgcolor: "#baf5e3"}
+[orders] {bgcolor: "#ead2f7"}
   *id {label: "bigint, not null"}
   checkout_id {label: "bigint, not null, FK(checkouts)"}
   created_at { label: "datatime, not null"}
   updated_at { label: "datatime, not null"}
 
-[purchased_items] {bgcolor: "#baf5e3"}
+[purchased_items] {bgcolor: "#d3d2f7"}
   *id {label: "bigint, not null"}
   order_id {label: "bigint, not null, FK(orders)"}
   product_id {label: "bigint, not null, FK(products)"}
@@ -38,7 +51,7 @@
   created_at { label: "datatime, not null"}
   updated_at { label: "datatime, not null"}
 
-[promotion_codes] {bgcolor: "#f7d9a6"}
+[promotion_codes] {bgcolor: "#f7e2d2"}
   *id {label: "bigint, not null"}
   code {label: "varchar(20), not null, uniq"}
   discount_amount {label: "bigint, not null"}
@@ -52,5 +65,7 @@
 # 1 or more      +
 
 products 1--* `purchased_items`
+products 1--* `cart_items`
+carts 1--* `cart_items`
 checkouts 1--1 `orders`
 orders 1--* `purchased_items`
