@@ -9,3 +9,38 @@ ja:
     cart: カート
   products:
     add_to_cart: カートに追加
+  carts:
+    index:
+      address:
+        billing_address: 受取場所
+        first_name: 姓
+        first_name_hint: 山田
+        last_name: 名
+        last_name_hint: 太郎
+        username: ユーザー名
+        email: メールアドレス
+        primary_address: 市区町村
+        primary_address_hint: 新宿区
+        secondary_address: 丁目・番地・号
+        secondary_address_hint: 西新宿1丁目8-1
+        country: 国
+        state: 都道府県
+        zip: 郵便番号
+        zip_hint: "1600023"
+      card:
+        payment: クレジットカード情報
+        name_on_card: 名義人
+        name_on_card_hint: TARO YAMADA
+        credit_card_number: カード番号
+        credit_card_number_hint: 1111 2222 3333 4444
+        expiration: 有効期限
+        expiration_hint: MM/YY
+        cvv: CVV
+        cvv_hint: "012"
+      cart:
+        your_cart: カート
+        total_price: ご請求額
+        continue_to_checkout: 注文を確定
+      promotion:
+        promo_code_hint: プロモコード
+        redeem: 適用

@@ -35,40 +35,40 @@
           <span class="text-success">-$5</span>
         </li>
         <li class="list-group-item d-flex justify-content-between">
-          <span><%= t "carts.cart.total_price" %></span>
+          <span><%= t ".cart.total_price" %></span>
           <strong>$20</strong>
         </li>
       </ul>
       <form class="card p-2">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="<%= t "carts.cart.promo_code" %>">
+          <input type="text" class="form-control" placeholder="<%= t ".promotion.promo_code_hint" %>">
           <div class="input-group-append">
-            <button type="submit" class="btn btn-secondary"><%= t "carts.redeem" %></button>
+            <button type="submit" class="btn btn-secondary"><%= t ".promotion.redeem" %></button>
           </div>
         </div>
       </form>
     </div>
     <div class="col-md-8 order-md-1">
-      <h4 class="mb-3"><%= t "carts.billing_address" %></h4>
+      <h4 class="text-muted mb-3"><%= t ".address.billing_address" %></h4>
       <form class="needs-validation" novalidate>
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label for="firstName"><%= t "carts.address.first_name" %></label>
-            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+            <label for="firstName"><%= t ".address.first_name" %></label>
+            <input type="text" class="form-control" id="firstName" placeholder="<%= t ".address.first_name_hint" %>" value="" required>
             <div class="invalid-feedback">
               Valid first name is required.
             </div>
           </div>
           <div class="col-md-6 mb-3">
-            <label for="lastName"><%= t "carts.address.last_name" %></label>
-            <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+            <label for="lastName"><%= t ".address.last_name" %></label>
+            <input type="text" class="form-control" id="lastName" placeholder="<%= t ".address.last_name_hint" %>" value="" required>
             <div class="invalid-feedback">
               Valid last name is required.
             </div>
           </div>
         </div>
         <div class="mb-3">
-          <label for="username"><%= t "carts.address.username" %></label>
+          <label for="username"><%= t ".address.username" %></label>
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text">@</span>
@@ -80,7 +80,7 @@
           </div>
         </div>
         <div class="mb-3">
-          <label for="email"><%= t "carts.address.email" %></label>
+          <label for="email"><%= t ".address.email" %></label>
           <input type="email" class="form-control" id="email" placeholder="you@example.com">
           <div class="invalid-feedback">
             Please enter a valid email address for shipping updates.
@@ -88,27 +88,27 @@
         </div>
         <div class="row">
           <div class="col-md-3 mb-3">
-            <label for="zip"><%= t "carts.zip" %></label>
-            <input type="text" class="form-control" id="zip" placeholder="" required>
+            <label for="zip"><%= t ".address.zip" %></label>
+            <input type="text" class="form-control" id="zip" placeholder="<%= t ".address.zip_hint" %>" required>
             <div class="invalid-feedback">
               Zip code required.
             </div>
           </div>
           <div class="col-md-5 mb-3">
-            <label for="country"><%= t "carts.country" %></label>
+            <label for="country"><%= t ".address.country" %></label>
             <select class="form-select d-block w-100" id="country" required>
-              <option>United States</option>
               <option selected>日本</option>
+              <option>United States</option>
             </select>
             <div class="invalid-feedback">
               Please select a valid country.
             </div>
           </div>
           <div class="col-md-4 mb-3">
-            <label for="state"><%= t "carts.state" %></label>
+            <label for="state"><%= t ".address.state" %></label>
             <select class="form-select d-block w-100" id="state" required>
-              <option>California</option>
               <option selected>東京</option>
+              <option>California</option>
             </select>
             <div class="invalid-feedback">
               Please provide a valid state.
@@ -116,29 +116,29 @@
           </div>
         </div>
         <div class="mb-3">
-          <label for="address"><%= t "carts.address.primary_address" %></label>
-          <input type="text" class="form-control" id="address" placeholder="<%= t "carts.primary_address_hint" %>" required>
+          <label for="address"><%= t ".address.primary_address" %></label>
+          <input type="text" class="form-control" id="address" placeholder="<%= t ".address.primary_address_hint" %>" required>
           <div class="invalid-feedback">
             Please enter your shipping address.
           </div>
         </div>
         <div class="mb-3">
-          <label for="address2"><%= t "carts.address.secondary_address" %></label>
-          <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+          <label for="address2"><%= t ".address.secondary_address" %></label>
+          <input type="text" class="form-control" id="address2" placeholder="<%= t ".address.secondary_address_hint" %>">
         </div>
-        <hr class="mb-4">
-        <h4 class="mb-3"><%= t "carts.payment" %></h4>
+        <hr class="my-4">
+        <h4 class="text-muted mb-3"><%= t ".card.payment" %></h4>
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label for="cc-name"><%= t "carts.name_on_card" %></label>
-            <input type="text" class="form-control" id="cc-name" placeholder="YAMADA TARO" required>
+            <label for="cc-name"><%= t ".card.name_on_card" %></label>
+            <input type="text" class="form-control" id="cc-name" placeholder="<%= t ".card.name_on_card_hint" %>" required>
             <div class="invalid-feedback">
               Name on card is required
             </div>
           </div>
           <div class="col-md-6 mb-3">
-            <label for="cc-number"><%= t "carts.credit_card_number" %></label>
-            <input type="text" class="form-control" id="cc-number" placeholder="" required>
+            <label for="cc-number"><%= t ".card.credit_card_number" %></label>
+            <input type="text" class="form-control" id="cc-number" placeholder="<%= t ".card.credit_card_number_hint" %>" required>
             <div class="invalid-feedback">
               Credit card number is required
             </div>
@@ -146,22 +146,24 @@
         </div>
         <div class="row">
           <div class="col-md-3 mb-3">
-            <label for="cc-expiration"><%= t "carts.expiration" %></label>
-            <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+            <label for="cc-expiration"><%= t ".card.expiration" %></label>
+            <input type="text" class="form-control" id="cc-expiration" placeholder="<%= t ".card.expiration_hint" %>" required>
             <div class="invalid-feedback">
               Expiration date required
             </div>
           </div>
           <div class="col-md-3 mb-3">
-            <label for="cc-cvv"><%= t "carts.cvv" %></label>
-            <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+            <label for="cc-cvv"><%= t ".card.cvv" %></label>
+            <input type="text" class="form-control" id="cc-cvv" placeholder="<%= t ".card.cvv_hint" %>" required>
             <div class="invalid-feedback">
               Security code required
             </div>
           </div>
         </div>
         <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit"><%= t "carts.continue_to_checkout" %><</button>
+        <div class="d-grid gap-2">
+          <button class="btn btn-primary btn-lg btn-checkout" type="submit"><%= t ".cart.continue_to_checkout" %></button>
+        </div>
       </form>
     </div>
   </div>
