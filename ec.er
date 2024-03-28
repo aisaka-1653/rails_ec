@@ -1,0 +1,71 @@
+[admins] {bgcolor: "#c6ecf5"}
+  *id {label: "bigint, not null"}
+  name {label: "varchar(15), not null, uniq"}
+  password_digest {label: "varchar(100), not null"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[products] {bgcolor: "#baf5e3"}
+  *id {label: "bigint, not null"}
+  name {label: "varchar(100), not null"}
+  content {label: "varchar(1000), not null"}
+  price {label: "bigint, not null"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[stocks] {bgcolor: "#baf5e3"}
+  *id {label: "bigint, not null"}
+  product_id {label: "bigint, not null, FK(products)"}
+  stock {label: "bigint, not null"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[checkouts] {bgcolor: "#baf5e3"}
+  *id {label: "bigint, not null"}
+  first_name {label: "varchar(20), not null"}
+  last_name {label: "varchar(20), not null"}
+  user_name {label: "varchar(50), not null"}
+  email {label: "varchar(100), not null"}
+  primary_address {label: "varchar(100), not null"}
+  secondary_address {label: "varchar(100)"}
+  country {label: "varchar(30), not null"}
+  state {label: "varchar(30), not null"}
+  zip {label: "varchar(30), not null"}
+  credit_name {label: "varchar(50), not null"}
+  credit_number {label: "bigint, not null"}
+  credit_expiration { label: "datatime, not null"}
+  credit_cvv {label: "smallint, not null"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[orders] {bgcolor: "#baf5e3"}
+  *id {label: "bigint, not null"}
+  checkout_id {label: "bigint, not null, FK(checkouts)"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[purchased_items] {bgcolor: "#baf5e3"}
+  *id {label: "bigint, not null"}
+  order_id {label: "bigint, not null, FK(orders)"}
+  product_id {label: "bigint, not null, FK(products)"}
+  quantity {label: "bigint, not null"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[promotion_codes] {bgcolor: "#f7d9a6"}
+  *id {label: "bigint, not null"}
+  code {label: "varchar(20), not null, uniq"}
+  discount_amount {label: "bigint, not null"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+# Cardinality    Syntax
+# 0 or 1         ?
+# exactly 1      1
+# 0 or more      *
+# 1 or more      +
+
+products 1--* `purchased_items`
+products 1--* `stocks`
+checkouts 1--1 `orders`
+orders 1--* `purchased_items`
