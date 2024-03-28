@@ -11,21 +11,21 @@
   <%= form_with model: [:admin, product] do |f| %>
     <div class="form_group mb-3">
       <%= f.label :name, class: "form-label" %>
-      <%= f.text_field :name, class: "form-control", id: "product_name" %>
+      <%= f.text_field :name, class: "form-control" %>
     </div>
     <div class="form_group mb-3">
       <%= f.label :content, class: "form-label" %>
-      <%= f.text_area :content, class: "form-control", id: "product_content" %>
+      <%= f.text_area :content, class: "form-control" %>
     </div>
     <div class="row mb-3">
       <div class="form_group col-sm-3">
         <%= f.label :price, class: "form-label" %>
-        <%= f.text_field :price, class: "form-control", id: "product_price" %>
+        <%= f.text_field :price, class: "form-control" %>
       </div>
     </div>
     <div class="form_group mb-5">
       <%= f.label :image, class: "form-label" %>
-      <%= f.file_field :image, class: "form-control", id: "product_image" %>
+      <%= f.file_field :image, class: "form-control" %>
     </div>
     <div class="d-flex gap-4">
       <%= f.submit class: "btn btn-outline-primary" %>
