@@ -1,0 +1,30 @@
+<div class="container px-4 px-lg-5 my-5">
+  <% if flash[:notice].present? %>
+    <div class="alert alert-success mb-4">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+  <%= link_to "新規登録", new_admin_product_path, class: "btn btn-outline-primary mb-3" %>
+  <table class="table table-hover align-middle">
+    <thead>
+      <tr>
+        <th scope="col"><%= Product.human_attribute_name(:id) %></th>
+        <th scope="col"><%= Product.human_attribute_name(:name) %></th>
+        <th scope="col"><%= Product.human_attribute_name(:price) %></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <th scope="row"><%= product.id %></th>
+          <td><%= product.name %></td>
+          <td><%= number_to_currency(product.price) %></td>
+          <td><%= link_to "編集", edit_admin_product_path(product), class: "btn btn-outline-success px-3 mr-3" %></td>
+          <td><%= link_to "削除", admin_product_path(product), data: { turbo_method: :delete, turbo_confirm: " ｢#{product.name}｣ を削除します｡よろしいですか?" }, class: "btn btn-outline-danger px-3" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,22 +1,8 @@
-[admins] {bgcolor: "#c6ecf5"}
-  *id {label: "bigint, not null"}
-  name {label: "varchar(15), not null, uniq"}
-  password_digest {label: "varchar(100), not null"}
-  created_at { label: "datatime, not null"}
-  updated_at { label: "datatime, not null"}
-
 [products] {bgcolor: "#baf5e3"}
   *id {label: "bigint, not null"}
   name {label: "varchar(100), not null"}
   content {label: "varchar(1000), not null"}
   price {label: "bigint, not null"}
-  created_at { label: "datatime, not null"}
-  updated_at { label: "datatime, not null"}
-
-[stocks] {bgcolor: "#baf5e3"}
-  *id {label: "bigint, not null"}
-  product_id {label: "bigint, not null, FK(products)"}
-  stock {label: "bigint, not null"}
   created_at { label: "datatime, not null"}
   updated_at { label: "datatime, not null"}
 
@@ -66,6 +52,5 @@
 # 1 or more      +
 
 products 1--* `purchased_items`
-products 1--* `stocks`
 checkouts 1--1 `orders`
 orders 1--* `purchased_items`

@@ -10,9 +10,10 @@ ja:
       product: 商品
     attributes:
       product:
-        id: ID
+        id: 商品ID
         name: 商品名
-        description: 商品説明
+        content: 商品説明
+        price: 価格
         image: 画像
         created_at: 登録日時
         updated_at: 更新日時
