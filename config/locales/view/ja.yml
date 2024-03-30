@@ -10,7 +10,7 @@ ja:
   products:
     add_to_cart: カートに追加
   carts:
-    index:
+    show:
       address:
         billing_address: 受取場所
         first_name: 姓
