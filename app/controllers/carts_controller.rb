@@ -17,6 +17,7 @@ class CartsController < ApplicationController
 
   def destroy
     @cart_item.destroy
+    redirect_to request.referer || root_path
   end
 
   private
