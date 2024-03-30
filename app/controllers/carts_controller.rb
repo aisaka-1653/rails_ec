@@ -2,6 +2,7 @@ class CartsController < ApplicationController
   before_action :set_cart_item, only: [:create, :destroy]
 
   def show
+    @cart_items = current_cart.cart_items
   end
 
   def create
