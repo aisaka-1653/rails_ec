@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class CartsController < ApplicationController
-  before_action :set_cart_item, only: [:create, :destroy]
+  before_action :set_cart_item, only: %i[create destroy]
 
   def show
     @cart_items = current_cart.cart_items
@@ -23,6 +25,6 @@ class CartsController < ApplicationController
   private
 
   def set_cart_item
-    @cart_item = current_cart.cart_items.find_by(product_id: params[:product_id],)
+    @cart_item = current_cart.cart_items.find_by(product_id: params[:product_id])
   end
 end
