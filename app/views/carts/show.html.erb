@@ -12,12 +12,12 @@
               <h6 class="my-0"><%= cart_item.product.name %></h6>
               <small class="text-muted"><%= "数量: #{cart_item.quantity}" %></small>
             </div>
-            <span class="text-muted"><%= number_to_currency(cart_item.product.price) %></span>
+            <span class="text-muted"><%= number_to_currency(cart_item.subtotal) %></span>
           </li>
         <% end %>
         <li class="list-group-item d-flex justify-content-between">
           <span><%= t ".cart.total_price" %></span>
-          <strong>$20</strong>
+          <strong><%= number_to_currency(current_cart.total_price) %></strong>
         </li>
       </ul>
       <form class="card p-2">
