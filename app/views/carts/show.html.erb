@@ -3,7 +3,7 @@
     <div class="col-md-4 order-md-2 mb-4">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="text-muted"><%= t ".cart.your_cart" %></span>
-        <span class="badge badge-secondary badge-pill">3</span>
+        <span class="badge bg-secondary rounded-pill">3</span>
       </h4>
       <ul class="list-group mb-3">
         <% @cart_items.each do |cart_item| %>
@@ -30,77 +30,70 @@
         </div>
       </form>
     </div>
+
     <div class="col-md-8 order-md-1">
       <h4 class="text-muted mb-3"><%= t ".address.billing_address" %></h4>
-      <form class="needs-validation" novalidate>
+      <%= form_with model: @order, html: { class: "needs-validation", novalidate: true } do |f| %>
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label for="firstName"><%= t ".address.first_name" %></label>
-            <input type="text" class="form-control" id="firstName" placeholder="<%= t ".address.first_name_hint" %>" value="" required>
+            <%= f.label :first_name, class: "form-label" %>
+            <%= f.text_field :first_name, class: "form-control", placeholder: t(".address.first_name_hint"), required: true %>
             <div class="invalid-feedback">
               <%= t ".address.first_name_warn" %>
             </div>
           </div>
           <div class="col-md-6 mb-3">
-            <label for="lastName"><%= t ".address.last_name" %></label>
-            <input type="text" class="form-control" id="lastName" placeholder="<%= t ".address.last_name_hint" %>" value="" required>
+            <%= f.label :last_name, class: "form-label" %>
+            <%= f.text_field :last_name, class: "form-control", placeholder: t(".address.last_name_hint"), required: true %>
             <div class="invalid-feedback">
               <%= t ".address.last_name_warn" %>
             </div>
           </div>
         </div>
         <div class="mb-3">
-          <label for="username"><%= t ".address.username" %></label>
+          <%=f.label :user_name, class: "form-label"%>
           <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">@</span>
-            </div>
-            <input type="text" class="form-control" id="username" placeholder="Username" required>
-            <div class="invalid-feedback" style="width: 100%;">
+            <span class="input-group-text">@</span>
+            <%=f.text_field :user_name, class: 'form-control', placeholder: "Username", required: true %>
+            <div class="invalid-feedback">
               <%= t ".address.username_warn" %>
             </div>
           </div>
         </div>
         <div class="mb-3">
-          <label for="email"><%= t ".address.email" %></label>
-          <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+          <%=f.label :email, class: "form-label"%>
+          <%=f.text_field :email, class: 'form-control', placeholder: "you@example.com", required: true %>
           <div class="invalid-feedback">
             <%= t ".address.email_warn" %>
           </div>
         </div>
         <div class="row">
           <div class="col-md-3 mb-3">
-            <label for="zip"><%= t ".address.zip" %></label>
-            <input type="text" class="form-control" id="zip" placeholder="<%= t ".address.zip_hint" %>" required>
+            <%=f.label :zip_code, class: "form-label"%>
+            <%=f.text_field :zip_code, class: 'form-control', placeholder: t(".address.zip_hint"), required: true %>
             <div class="invalid-feedback">
               <%= t ".address.zip_warn" %>
             </div>
           </div>
           <div class="col-md-5 mb-3">
-            <label for="country"><%= t ".address.country" %></label>
-            <select class="form-select d-block w-100" id="country" required>
-              <option selected>日本</option>
-              <option>United States</option>
-            </select>
+            <%=f.label :country, class: "form-label" %>
+            <%=f.select :country, ["日本", "United States"], {}, class: 'form-select'%>
           </div>
           <div class="col-md-4 mb-3">
-            <label for="state"><%= t ".address.state" %></label>
-            <select class="form-select d-block w-100" id="state" required>
-              <option selected>東京</option>
-              <option>California</option>
-            </select>
+            <%=f.label :state, class: "form-label" %>
+            <%=f.select :state, ["東京", "California"], {}, class: 'form-select'%>
           </div>
         </div>
         <div class="mb-3">
-          <label for="address"><%= t ".address.primary_address" %></label>
-          <input type="text" class="form-control" id="address" placeholder="<%= t ".address.primary_address_hint" %>" required>
+          <%=f.label :primary_address, class: "form-label"%>
+          <%=f.text_field :primary_address, class: 'form-control', placeholder: t(".address.primary_address_hint"), required: true %>
           <div class="invalid-feedback">
             <%= t ".address.primary_address_warn" %>
           </div>
         </div>
         <div class="mb-3">
-          <label for="address2"><%= t ".address.secondary_address" %></label>
-          <input type="text" class="form-control" id="address2" placeholder="<%= t ".address.secondary_address_hint" %>" required>
+          <%=f.label :secondary_address, class: "form-label"%>
+          <%=f.text_field :secondary_address, class: 'form-control', placeholder: t(".address.secondary_address_hint"), required: true %>
           <div class="invalid-feedback">
             <%= t ".address.secondary_address_warn" %>
           </div>
@@ -109,15 +102,15 @@
         <h4 class="text-muted mb-3"><%= t ".card.payment" %></h4>
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label for="cc-name"><%= t ".card.name_on_card" %></label>
-            <input type="text" class="form-control" id="cc-name" placeholder="<%= t ".card.name_on_card_hint" %>" required>
+            <%=f.label :credit_name, class: "form-label"%>
+            <%=f.text_field :credit_name, class: 'form-control', placeholder: t(".card.name_on_card_hint"), required: true %>
             <div class="invalid-feedback">
               <%= t ".card.name_on_card_warn" %>
             </div>
           </div>
           <div class="col-md-6 mb-3">
-            <label for="cc-number"><%= t ".card.credit_card_number" %></label>
-            <input type="text" class="form-control" id="cc-number" placeholder="<%= t ".card.credit_card_number_hint" %>" required>
+            <%=f.label :credit_number, class: "form-label"%>
+            <%=f.text_field :credit_number, class: 'form-control', placeholder: t(".card.credit_card_number_hint"), required: true %>
             <div class="invalid-feedback">
               <%= t ".card.credit_card_number_warn" %>
             </div>
@@ -125,15 +118,15 @@
         </div>
         <div class="row">
           <div class="col-md-3 mb-3">
-            <label for="cc-expiration"><%= t ".card.expiration" %></label>
-            <input type="text" class="form-control" id="cc-expiration" placeholder="<%= t ".card.expiration_hint" %>" required>
+            <%=f.label :credit_expiration, class: "form-label"%>
+            <%=f.text_field :credit_expiration, class: 'form-control', placeholder: t(".card.expiration_hint"), required: true %>
             <div class="invalid-feedback">
               <%= t ".card.expiration_warn" %>
             </div>
           </div>
           <div class="col-md-3 mb-3">
-            <label for="cc-cvv"><%= t ".card.cvv" %></label>
-            <input type="text" class="form-control" id="cc-cvv" placeholder="<%= t ".card.cvv_hint" %>" required>
+            <%=f.label :credit_cvv, class: "form-label"%>
+            <%=f.text_field :credit_cvv, class: 'form-control', placeholder: t(".card.cvv_hint"), required: true %>
             <div class="invalid-feedback">
               <%= t ".card.cvv_warn" %>
             </div>
@@ -141,9 +134,9 @@
         </div>
         <hr class="mb-4">
         <div class="d-grid gap-2">
-          <button class="btn btn-primary btn-lg btn-checkout" type="submit"><%= t ".cart.continue_to_checkout" %></button>
+          <%= f.submit t(".cart.continue_to_checkout"), class: "btn btn-primary btn-lg btn-checkout" %>
         </div>
-      </form>
+      <% end %>
     </div>
   </div>
 </div>
