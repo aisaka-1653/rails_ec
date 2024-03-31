@@ -19,17 +19,17 @@
   created_at { label: "datatime, not null"}
   updated_at { label: "datatime, not null"}
 
-[checkouts] {bgcolor: "#ead2f7"}
+[orders] {bgcolor: "#d3d2f7"}
   *id {label: "bigint, not null"}
   first_name {label: "varchar(20), not null"}
   last_name {label: "varchar(20), not null"}
   user_name {label: "varchar(50), not null"}
   email {label: "varchar(100), not null"}
-  primary_address {label: "varchar(100), not null"}
-  secondary_address {label: "varchar(100)"}
+  zip {label: "varchar(30), not null"}
   country {label: "varchar(30), not null"}
   state {label: "varchar(30), not null"}
-  zip {label: "varchar(30), not null"}
+  primary_address {label: "varchar(100), not null"}
+  secondary_address {label: "varchar(100)"}
   credit_name {label: "varchar(50), not null"}
   credit_number {label: "bigint, not null"}
   credit_expiration { label: "datatime, not null"}
@@ -37,13 +37,7 @@
   created_at { label: "datatime, not null"}
   updated_at { label: "datatime, not null"}
 
-[orders] {bgcolor: "#ead2f7"}
-  *id {label: "bigint, not null"}
-  checkout_id {label: "bigint, not null, FK(checkouts)"}
-  created_at { label: "datatime, not null"}
-  updated_at { label: "datatime, not null"}
-
-[purchased_items] {bgcolor: "#d3d2f7"}
+[order_details] {bgcolor: "#d3d2f7"}
   *id {label: "bigint, not null"}
   order_id {label: "bigint, not null, FK(orders)"}
   product_id {label: "bigint, not null, FK(products)"}
@@ -64,8 +58,7 @@
 # 0 or more      *
 # 1 or more      +
 
-products 1--* `purchased_items`
 products 1--* `cart_items`
+products 1--* `order_details`
 carts 1--* `cart_items`
-checkouts 1--1 `orders`
-orders 1--* `purchased_items`
+orders 1--+ `order_details`

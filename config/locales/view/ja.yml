@@ -51,7 +51,7 @@ ja:
       cart:
         your_cart: カート
         total_price: ご請求額
-        continue_to_checkout: 注文を確定
+        continue_to_checkout: 購入する
       promotion:
         promo_code_hint: プロモコード
         redeem: 適用
