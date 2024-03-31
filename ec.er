@@ -40,8 +40,10 @@
 [order_details] {bgcolor: "#d3d2f7"}
   *id {label: "bigint, not null"}
   order_id {label: "bigint, not null, FK(orders)"}
-  product_id {label: "bigint, not null, FK(products)"}
+  product_name {label: "varchar(100), not null"}
+  product_price {label: "bigint, not null"}
   quantity {label: "bigint, not null"}
+  subtotal {label: "bigint, not null"}
   created_at { label: "datatime, not null"}
   updated_at { label: "datatime, not null"}
 
@@ -59,6 +61,5 @@
 # 1 or more      +
 
 products 1--* `cart_items`
-products 1--* `order_details`
 carts 1--* `cart_items`
 orders 1--+ `order_details`

@@ -50,6 +50,9 @@ ja:
         updated_at: 更新日時
       order_detail:
         id: 注文詳細ID
+        product_name: 商品名
+        product_price: 商品価格
         quantity: 数量
+        subtotal: 小計
         created_at: 登録日時
         updated_at: 更新日時
