@@ -25,15 +25,15 @@
   last_name {label: "varchar(20), not null"}
   user_name {label: "varchar(50), not null"}
   email {label: "varchar(100), not null"}
-  zip {label: "varchar(30), not null"}
+  zip_code {label: "varchar(30), not null"}
   country {label: "varchar(30), not null"}
   state {label: "varchar(30), not null"}
   primary_address {label: "varchar(100), not null"}
   secondary_address {label: "varchar(100)"}
   credit_name {label: "varchar(50), not null"}
-  credit_number {label: "bigint, not null"}
+  credit_number {label: "varchar(20), not null"}
   credit_expiration { label: "datatime, not null"}
-  credit_cvv {label: "smallint, not null"}
+  credit_cvv {label: "varchar(10), not null"}
   created_at { label: "datatime, not null"}
   updated_at { label: "datatime, not null"}
 
