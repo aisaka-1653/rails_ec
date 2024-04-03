@@ -4,7 +4,7 @@ class CartsController < ApplicationController
   before_action :set_cart_item, only: %i[create destroy]
 
   def show
-    @cart_items = current_cart.cart_items
+    @cart_items = current_cart.cart_items.includes(:product)
     @order = Order.new
   end
 
