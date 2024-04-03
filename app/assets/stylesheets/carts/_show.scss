@@ -1,0 +1,15 @@
+.btn-checkout {
+  background: linear-gradient(to right, #63c8ef, #74b1ea);
+  border: none;
+  box-shadow: 3px 4px 0 0 rgba(0,0,0,0.2);
+}
+
+.delete-btn {
+  color: #3A91A1;
+  text-decoration: none;
+
+  &:hover {
+    color: #3A91A1;
+    text-decoration: underline;
+  }
+}

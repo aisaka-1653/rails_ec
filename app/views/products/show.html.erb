@@ -10,13 +10,13 @@
           <%= number_to_currency(@product.price) %>
         </div>
         <p class="lead"><%= @product.content %></p>
-        <div class="d-flex">
-          <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-          <button class="btn btn-outline-dark flex-shrink-0" type="button">
+        <%= form_with url: carts_path(product_id: @product.id), class: "d-flex" do |f| %>
+          <%= f.number_field :quantity, in: 1..99, step: 1, value: 1, class: "form-control text-center me-3 quantity-field" %>
+          <%= f.button type: 'submit', class: "btn btn-outline-dark flex-shrink-0" do %>
             <i class="bi-cart-fill me-1"></i>
             <%= t 'products.add_to_cart' %>
-          </button>
-        </div>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>

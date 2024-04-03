@@ -10,9 +10,7 @@
       </div>
       <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
         <div class="text-center">
-          <a class="btn btn-outline-dark mt-auto" href="#">
-            <%= t 'products.add_to_cart' %>
-          </a>
+          <%= link_to t('products.add_to_cart'), carts_path(product_id: product.id, quantity: 1), data: { turbo_method: :post }, class: "btn btn-outline-dark mt-auto" %>
         </div>
       </div>
     </div>
