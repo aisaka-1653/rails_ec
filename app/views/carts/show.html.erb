@@ -1,9 +1,18 @@
 <div class="container my-5">
+  <% if @order.errors.present? %>
+    <ul id="error_explanation" class="alert alert-danger mb-4">
+      <% @order.errors.full_messages.each do |message| %>
+        <div class="px-3">
+          <li><%= message %></li>
+        </div>
+      <% end %>
+    </ul>
+  <% end %>
   <div class="row">
     <div class="col-md-4 order-md-2 mb-4">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="text-muted"><%= t ".cart.your_cart" %></span>
-        <span class="badge bg-secondary rounded-pill">3</span>
+        <span class="badge bg-secondary rounded-pill"><%= cart_items_count %></span>
       </h4>
       <ul class="list-group mb-3">
         <% @cart_items.each do |cart_item| %>
@@ -13,7 +22,7 @@
               <small class="text-muted"><%= "数量: #{cart_item.quantity}" %></small>
             </div>
             <span class="text-muted me-2"><%= number_to_currency(cart_item.subtotal) %></span>
-            <%= link_to "削除", cart_path(product_id: cart_item.product_id), data: { turbo_method: :delete }, class: "delete-btn small px-1" %>
+            <%= link_to "削除", cart_path(cart_item, product_id: cart_item.product_id), data: { turbo_method: :delete }, class: "delete-btn small px-1" %>
           </li>
         <% end %>
         <li class="list-group-item d-flex justify-content-between">
@@ -62,7 +71,7 @@
         </div>
         <div class="mb-3">
           <%=f.label :email, class: "form-label"%>
-          <%=f.text_field :email, class: 'form-control', placeholder: "you@example.com", required: true %>
+          <%=f.email_field :email, class: 'form-control', placeholder: "you@example.com", required: true %>
           <div class="invalid-feedback">
             <%= t ".address.email_warn" %>
           </div>
