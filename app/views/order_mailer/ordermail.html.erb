@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Apparel Shopでのご注文</h1>
+    <p>以下の内容でご注文を受け付けました。</p>
+    <ul>
+      <li>注文番号: <%= @order.id %></li>
+      <li>注文日時: <%= @order.created_at.strftime('%Y-%m-%d %H:%M') %></li>
+    </ul>
+    <table border="1" width="75%" cellpadding="10">
+      <thead>
+        <tr>
+          <th scope="col"><%= OrderDetail.human_attribute_name(:product_name) %></th>
+          <th scope="col"><%= OrderDetail.human_attribute_name(:product_price) %></th>
+          <th scope="col"><%= OrderDetail.human_attribute_name(:quantity) %></th>
+          <th scope="col"><%= OrderDetail.human_attribute_name(:subtotal) %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order_details.each do |item| %>
+          <tr align="center">
+            <th scope="row"><%= item.product_name %></th>
+            <td><%= number_to_currency(item.product_price) %></td>
+            <td><%= item.quantity %></td>
+            <td><%= number_to_currency(item.subtotal) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr align="center">
+          <th scope="row" colspan="3">合計金額</th>
+          <td><%= number_to_currency(@order.total_price) %></td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>

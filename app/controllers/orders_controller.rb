@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @cart_items = current_cart.cart_items.includes(:product)
 
-    @order.transaction do
+    ApplicationRecord.transaction do
       @order.save!
       @cart_items.each do |cart_item|
         product = cart_item.product
