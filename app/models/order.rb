@@ -17,4 +17,8 @@ class Order < ApplicationRecord
       self[:credit_expiration] = Date.strptime(value, "%m/%y").end_of_month
     end
   end
+
+  def total_price
+    order_details.sum(&:subtotal)
+  end
 end

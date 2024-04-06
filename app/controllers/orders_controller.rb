@@ -16,7 +16,8 @@ class OrdersController < ApplicationController
       end
       current_cart.destroy
       session.delete(:cart_id)
-      redirect_to root_path, notice: "購入ありがとうございます"
+      OrderMailer.ordermail(@order).deliver_now
+      redirect_to root_url, notice: "購入ありがとうございます"
     end
   rescue ActiveRecord::RecordInvalid
     flash.now[:error] = "注文が正常に行えませんでした"
