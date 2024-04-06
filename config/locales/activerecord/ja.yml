@@ -6,6 +6,21 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+      models:
+        order:
+          attributes:
+            user_name:
+              invalid: "は英数字のみ有効です"
+            email:
+              invalid: "の値が不正です"
+            zip_code:
+              invalid: "は7桁の数字のみ有効です"
+            credit_name:
+              invalid: "は英文字のみ有効です"
+            credit_number:
+              invalid: "は16桁の数字のみ有効です"
+            credit_cvv:
+              invalid: "は3~4桁の数字のみ有効です"
     models:
       product: 商品
       cart: カート
