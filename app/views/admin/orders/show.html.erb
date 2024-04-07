@@ -1,51 +1,57 @@
 <div class="container px-4 px-lg-5 my-5">
-  <div class="row">
-    <div class="col-3 col-xl-2 mb-4">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%= Order.human_attribute_name(:id) %></li>
-        <li class="list-group-item"><%= t('.order_date_and_time') %></li>
-        <li class="list-group-item"><%= t('.full_name') %></li>
-        <li class="list-group-item"><%= Order.human_attribute_name(:email) %></li>
-        <li class="list-group-item"><%= Order.human_attribute_name(:zip_code) %></li>
-        <li class="list-group-item"><%= t('.billing_address') %></li>
-      </ul>
-    </div>
-    <div class="col-9 col-xl-10 mb-4">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%= @order.id %></li>
-        <li class="list-group-item"><%= l @order.created_at, format: :long %></li>
-        <li class="list-group-item"><%= "#{@order.first_name} #{@order.last_name}" %></li>
-        <li class="list-group-item"><%= @order.email %></li>
-        <li class="list-group-item"><%= @order.zip_code %></li>
-        <li class="list-group-item"><%= "#{@order.primary_address} #{@order.secondary_address}" %></li>
-      </ul>
-    </div>
-  </div>
+  <table class="table align-middle text-center w-50 mb-5">
+    <tbody>
+      <tr>
+        <td><%= Order.human_attribute_name(:id) %></th>
+        <td><%= @order.id %></td>
+      </tr>
+      <tr>
+        <td><%= t('.order_date_and_time') %></th>
+        <td><%= l @order.created_at, format: :long %></td>
+      </tr>
+      <tr>
+        <td><%= t('.full_name') %></th>
+        <td><%= "#{@order.first_name} #{@order.last_name}" %></td>
+      </tr>
+      <tr>
+        <td><%= Order.human_attribute_name(:email) %></th>
+        <td><%= @order.email %></td>
+      </tr>
+      <tr>
+        <td><%= Order.human_attribute_name(:zip_code) %></th>
+        <td><%= @order.zip_code %></td>
+      </tr>
+      <tr>
+        <td><%= t('.billing_address') %></th>
+        <td><%= "#{@order.primary_address} #{@order.secondary_address}" %></td>
+      </tr>
+    </tbody>
+  </table>
   <table class="table align-middle text-center">
-      <thead>
+    <thead>
+      <tr>
+        <th scope="col"><%= OrderDetail.human_attribute_name(:product_name) %></th>
+        <th scope="col"><%= OrderDetail.human_attribute_name(:product_price) %></th>
+        <th scope="col"><%= OrderDetail.human_attribute_name(:quantity) %></th>
+        <th scope="col"><%= OrderDetail.human_attribute_name(:subtotal) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order_details.each do |item| %>
         <tr>
-          <th scope="col"><%= OrderDetail.human_attribute_name(:product_name) %></th>
-          <th scope="col"><%= OrderDetail.human_attribute_name(:product_price) %></th>
-          <th scope="col"><%= OrderDetail.human_attribute_name(:quantity) %></th>
-          <th scope="col"><%= OrderDetail.human_attribute_name(:subtotal) %></th>
+          <th scope="row"><%= item.product_name %></th>
+          <td><%= number_to_currency(item.product_price) %></td>
+          <td><%= item.quantity %></td>
+          <td><%= number_to_currency(item.subtotal) %></td>
         </tr>
-      </thead>
-      <tbody>
-        <% @order_details.each do |item| %>
-          <tr>
-            <th scope="row"><%= item.product_name %></th>
-            <td><%= number_to_currency(item.product_price) %></td>
-            <td><%= item.quantity %></td>
-            <td><%= number_to_currency(item.subtotal) %></td>
-          </tr>
-        <% end %>
-      </tbody>
-      <tfoot class="table-group-divider">
-        <tr>
-          <th scope="row" colspan="3"><%= t('.total_price') %></th>
-          <td><%= number_to_currency(@order.total_price) %></td>
-        </tr>
-      </tfoot>
-    </table>
-    <%= link_to "戻る", admin_orders_path, class: "btn btn-secondary px-4 mt-4" %>
+      <% end %>
+    </tbody>
+    <tfoot class="table-group-divider">
+      <tr>
+        <th scope="row" colspan="3"><%= t('.total_price') %></th>
+        <td><%= number_to_currency(@order.total_price) %></td>
+      </tr>
+    </tfoot>
+  </table>
+  <%= link_to "戻る", admin_orders_path, class: "btn btn-secondary px-4 mt-4" %>
 </div>
