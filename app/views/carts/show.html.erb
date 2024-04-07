@@ -1,5 +1,5 @@
 <div class="container my-5">
-  <% if flash[:error].present? %>
+  <% if flash[:error].present? && @order.errors.empty? %>
     <div class="container alert alert-danger text-center mb-4">
       <%= flash[:error] %>
     </div>
