@@ -60,3 +60,9 @@ ja:
       index:
         order_date_and_time: 注文日時
         purchased_items_count: 購入点数
+      show:
+        order_date_and_time: 注文日時
+        full_name: 氏名
+        billing_address: 住所
+        total_price: 合計金額
+
