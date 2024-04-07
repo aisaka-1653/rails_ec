@@ -21,8 +21,8 @@
       </ul>
     </div>
   </div>
-  <table class="table align-middle">
-      <thead class="text-center">
+  <table class="table align-middle text-center">
+      <thead>
         <tr>
           <th scope="col"><%= OrderDetail.human_attribute_name(:product_name) %></th>
           <th scope="col"><%= OrderDetail.human_attribute_name(:product_price) %></th>
@@ -30,7 +30,7 @@
           <th scope="col"><%= OrderDetail.human_attribute_name(:subtotal) %></th>
         </tr>
       </thead>
-      <tbody class="text-center">
+      <tbody>
         <% @order_details.each do |item| %>
           <tr>
             <th scope="row"><%= item.product_name %></th>
@@ -40,7 +40,7 @@
           </tr>
         <% end %>
       </tbody>
-      <tfoot class="table-group-divider text-center">
+      <tfoot class="table-group-divider">
         <tr>
           <th scope="row" colspan="3"><%= t('.total_price') %></th>
           <td><%= number_to_currency(@order.total_price) %></td>
