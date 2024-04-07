@@ -2,7 +2,7 @@
 
 class CartsController < ApplicationController
   before_action :set_cart_item, only: %i[create destroy]
-  before_action :has_cart_items?, only: %i[show]
+  before_action :cart_items?, only: %i[show]
 
   def show
     @order = Order.new
@@ -30,9 +30,9 @@ class CartsController < ApplicationController
     @cart_item = current_cart.cart_items.find_by(product_id: params[:product_id])
   end
 
-  def has_cart_items?
-    if current_cart.cart_items.empty?
-      redirect_to root_url, alert: "カートに商品を追加して下さい" 
-    end
+  def cart_items?
+    return unless current_cart.cart_items.empty?
+
+    redirect_to root_url, alert: 'カートに商品を追加して下さい'
   end
 end

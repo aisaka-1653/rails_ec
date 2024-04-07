@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OrderMailer < ApplicationMailer
   # default from: "apparel_shop@example.jp"
 
@@ -5,6 +7,6 @@ class OrderMailer < ApplicationMailer
     @order = order
     @order_details = order.order_details
 
-    mail(to: @order.email, subject: "Apparel Shop")
+    mail(to: @order.email, subject: 'Apparel Shop')
   end
 end

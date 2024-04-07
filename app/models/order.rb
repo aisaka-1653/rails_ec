@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Order < ApplicationRecord
   has_many :order_details, dependent: :destroy
 
@@ -13,12 +15,31 @@ class Order < ApplicationRecord
   validates :credit_cvv, format: { with: /\A\d{3,4}\z/ }
 
   def credit_expiration=(value)
-    if value.match?(/\A\d{2}\/\d{2}\z/)
-      self[:credit_expiration] = Date.strptime(value, "%m/%y").end_of_month
-    end
+    return unless value.match?(%r{\A\d{2}/\d{2}\z})
+
+    self[:credit_expiration] = Date.strptime(value, '%m/%y').end_of_month
   end
 
   def total_price
     order_details.sum(&:subtotal)
+  end
+
+  def save_with_details(cart)
+    ApplicationRecord.transaction do
+      save!
+      cart.cart_items.includes(:product).find_each do |cart_item|
+        product = cart_item.product
+        order_details.create!(
+          product_name: product.name,
+          product_price: product.price,
+          quantity: cart_item.quantity,
+          subtotal: cart_item.subtotal
+        )
+      end
+      cart.destroy!
+    end
+    true
+  rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotDestroyed
+    false
   end
 end
