@@ -55,3 +55,8 @@ ja:
       promotion:
         promo_code_hint: プロモコード
         redeem: 適用
+  admin:
+    orders:
+      index:
+        order_date_and_time: 注文日時
+        purchased_items_count: 購入点数
