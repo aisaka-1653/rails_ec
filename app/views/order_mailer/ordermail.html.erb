@@ -10,7 +10,7 @@
       <li>注文番号: <%= @order.id %></li>
       <li>注文日時: <%= @order.created_at.strftime('%Y-%m-%d %H:%M') %></li>
     </ul>
-    <table border="1" width="75%" cellpadding="10">
+    <table class="table-responsive" border="1" cellpadding="10">
       <thead>
         <tr>
           <th scope="col"><%= OrderDetail.human_attribute_name(:product_name) %></th>
