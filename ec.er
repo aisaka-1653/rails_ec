@@ -8,6 +8,7 @@
 
 [carts] {bgcolor: "#d2f7e2"}
   *id {label: "bigint, not null"}
+  promotion_code_id {label: "bigint, FK(promotion_codes)"}
   created_at { label: "datatime, not null"}
   updated_at { label: "datatime, not null"}
 
@@ -50,7 +51,7 @@
 [promotion_codes] {bgcolor: "#f7e2d2"}
   *id {label: "bigint, not null"}
   code {label: "varchar(20), not null, uniq"}
-  discount_amount {label: "bigint, not null"}
+  amount {label: "bigint, not null"}
   created_at { label: "datatime, not null"}
   updated_at { label: "datatime, not null"}
 
@@ -63,3 +64,4 @@
 products 1--* `cart_items`
 carts 1--* `cart_items`
 orders 1--+ `order_details`
+promotion_codes ?--* 'carts'
