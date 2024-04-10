@@ -6,6 +6,6 @@ class Cart < ApplicationRecord
   belongs_to :promotion_code, optional: true
 
   def total_price
-    cart_items.includes(:product).sum(&:subtotal)
+    cart_items.includes(:product).sum(&:subtotal) - (promotion_code&.amount || 0)
   end
 end

@@ -7,6 +7,7 @@ class CartsController < ApplicationController
   def show
     @order = Order.new
     @cart_items = current_cart.cart_items.includes(:product)
+    @promotion_code = current_cart.promotion_code
   end
 
   def create
