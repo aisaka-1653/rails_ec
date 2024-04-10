@@ -6,8 +6,27 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+      models:
+        order:
+          attributes:
+            user_name:
+              invalid: "は英数字のみ有効です"
+            email:
+              invalid: "の値が不正です"
+            zip_code:
+              invalid: "は7桁の数字のみ有効です"
+            credit_name:
+              invalid: "は英文字のみ有効です"
+            credit_number:
+              invalid: "は16桁の数字のみ有効です"
+            credit_cvv:
+              invalid: "は3~4桁の数字のみ有効です"
     models:
       product: 商品
+      cart: カート
+      cart_item: カートアイテム
+      order: 注文
+      order_detail: 注文詳細
     attributes:
       product:
         id: 商品ID
@@ -15,5 +34,40 @@ ja:
         content: 商品説明
         price: 価格
         image: 画像
+        created_at: 登録日時
+        updated_at: 更新日時
+      cart:
+        id: カートID
+        created_at: 登録日時
+        updated_at: 更新日時
+      cart_item:
+        id: カートアイテムID
+        quantity: 数量
+        created_at: 登録日時
+        updated_at: 更新日時
+      order:
+        id: 注文ID
+        quantity: 数量
+        first_name: 姓
+        last_name: 名
+        user_name: ユーザー名
+        email: メールアドレス
+        zip_code: 郵便番号
+        country: 国
+        state: 都道府県
+        primary_address: 市区町村
+        secondary_address: 丁目・番地・号
+        credit_name: 名義人
+        credit_number: カード番号
+        credit_expiration: 有効期限
+        credit_cvv: CVV
+        created_at: 登録日時
+        updated_at: 更新日時
+      order_detail:
+        id: 注文詳細ID
+        product_name: 商品名
+        product_price: 商品価格
+        quantity: 数量
+        subtotal: 小計
         created_at: 登録日時
         updated_at: 更新日時

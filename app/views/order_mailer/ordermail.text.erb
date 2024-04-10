@@ -1,0 +1,12 @@
+Apparel Shopでのご注文
+以下の内容でご注文を受け付けました。
+
+- 注文番号: <%= @order.id %>
+- 注文日時: <%= @order.created_at.strftime('%Y-%m-%d %H:%M') %>
+
+<%= OrderDetail.human_attribute_name(:product_name) %> | <%= OrderDetail.human_attribute_name(:product_price) %> | <%= OrderDetail.human_attribute_name(:quantity) %> | <%= OrderDetail.human_attribute_name(:subtotal) %>
+<% @order_details.each do |item| %>
+<%= item.product_name %> | <%= number_to_currency(item.product_price) %> | <%= item.quantity %> | <%= number_to_currency(item.subtotal) %>
+<% end %>
+
+合計金額: <%= number_to_currency(@order.total_price) %>
