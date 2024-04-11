@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_09_005402) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_11_081954) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,9 +53,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_09_005402) do
   end
 
   create_table "carts", force: :cascade do |t|
-    t.bigint "promotion_code_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "promotion_code_id"
     t.index ["promotion_code_id"], name: "index_carts_on_promotion_code_id"
   end
 
@@ -68,6 +68,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_09_005402) do
     t.integer "product_price", null: false
     t.integer "subtotal", null: false
     t.index ["order_id"], name: "index_order_details_on_order_id"
+  end
+
+  create_table "order_promotions", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.string "code"
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_promotions_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -118,4 +127,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_09_005402) do
   add_foreign_key "cart_items", "products"
   add_foreign_key "carts", "promotion_codes"
   add_foreign_key "order_details", "orders"
+  add_foreign_key "order_promotions", "orders"
 end

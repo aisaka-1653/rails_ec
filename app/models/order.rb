@@ -2,6 +2,7 @@
 
 class Order < ApplicationRecord
   has_many :order_details, dependent: :destroy
+  has_one :order_promotion, dependent: :destroy
 
   validates :first_name, :last_name, :user_name, :email, :zip_code, :country, :state,
             :primary_address, :secondary_address, :credit_name, :credit_number,
