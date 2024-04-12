@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PromotionCodesController < ApplicationController
   before_action :set_promotion_code, only: [:apply]
 

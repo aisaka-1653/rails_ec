@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddPromotionCodeIdToCarts < ActiveRecord::Migration[7.0]
   def change
     add_reference :carts, :promotion_code, null: true, foreign_key: true

@@ -28,25 +28,35 @@ class Order < ApplicationRecord
   def save_with_details(cart)
     ApplicationRecord.transaction do
       save!
-      cart.cart_items.includes(:product).find_each do |cart_item|
-        product = cart_item.product
-        order_details.create!(
-          product_name: product.name,
-          product_price: product.price,
-          quantity: cart_item.quantity,
-          subtotal: cart_item.subtotal
-        )
-      end
-      if cart.promotion_code
-        create_order_promotion!(
-          code: cart.promotion_code.code,
-          amount: cart.promotion_code.amount
-        )
-      end
+      create_order_details(cart)
+      create_order_promotion(cart)
       cart.destroy!
     end
     true
   rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotDestroyed
     false
+  end
+
+  private
+
+  def create_order_details(cart)
+    cart.cart_items.includes(:product).find_each do |cart_item|
+      product = cart_item.product
+      order_details.create!(
+        product_name: product.name,
+        product_price: product.price,
+        quantity: cart_item.quantity,
+        subtotal: cart_item.subtotal
+      )
+    end
+  end
+
+  def create_order_promotion(cart)
+    return unless cart.promotion_code
+
+    create_order_promotion!(
+      code: cart.promotion_code.code,
+      amount: cart.promotion_code.amount
+    )
   end
 end
