@@ -5,7 +5,7 @@
         <%= image_tag @product.image, class: "card-img-top mb-5 mb-md-0 product-image detail-image" if @product.image.attached? %>
       </div>
       <div class="col-md-6">
-        <h1 class="display-5 fw-bolder"><%= @product.name %></h1>
+        <h1 class="display-6 fw-semibold"><%= @product.name %></h1>
         <div class="fs-5 mb-5">
           <%= number_to_currency(@product.price) %>
         </div>
