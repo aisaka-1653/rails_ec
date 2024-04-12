@@ -11,6 +11,7 @@ module Admin
     def show
       @order = Order.find(params[:id])
       @order_details = @order.order_details
+      @order_promotion = @order.order_promotion
     end
   end
 end

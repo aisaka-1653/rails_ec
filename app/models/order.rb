@@ -22,7 +22,7 @@ class Order < ApplicationRecord
   end
 
   def total_price
-    order_details.sum(&:subtotal)
+    order_details.sum(&:subtotal) - (order_promotion&.amount || 0)
   end
 
   def save_with_details(cart)

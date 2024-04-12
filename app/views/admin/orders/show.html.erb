@@ -45,6 +45,14 @@
           <td><%= number_to_currency(item.subtotal) %></td>
         </tr>
       <% end %>
+      <% if @order_promotion %>
+        <tr align="center">
+          <th scope="row"><%= @order_promotion.code %></th>
+          <td><%= number_to_currency(@order_promotion.amount, format: "-%n%u") %></td>
+          <td>1</td>
+          <td><%= number_to_currency(@order_promotion.amount, format: "-%n%u") %></td>
+        </tr>
+      <% end %>
     </tbody>
     <tfoot class="table-group-divider">
       <tr>
