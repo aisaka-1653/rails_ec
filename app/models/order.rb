@@ -37,6 +37,12 @@ class Order < ApplicationRecord
           subtotal: cart_item.subtotal
         )
       end
+      if cart.promotion_code
+        create_order_promotion!(
+          code: cart.promotion_code.code,
+          amount: cart.promotion_code.amount
+        )
+      end
       cart.destroy!
     end
     true
