@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @cart_items = current_cart.cart_items.includes(:product)
+    @promotion_code = current_cart.promotion_code
 
     if @order.save_with_details(current_cart)
       session.delete(:cart_id)

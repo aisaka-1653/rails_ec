@@ -2,6 +2,7 @@
 
 class Order < ApplicationRecord
   has_many :order_details, dependent: :destroy
+  has_one :order_promotion, dependent: :destroy
 
   validates :first_name, :last_name, :user_name, :email, :zip_code, :country, :state,
             :primary_address, :secondary_address, :credit_name, :credit_number,
@@ -21,25 +22,41 @@ class Order < ApplicationRecord
   end
 
   def total_price
-    order_details.sum(&:subtotal)
+    order_details.sum(&:subtotal) - (order_promotion&.amount || 0)
   end
 
   def save_with_details(cart)
     ApplicationRecord.transaction do
       save!
-      cart.cart_items.includes(:product).find_each do |cart_item|
-        product = cart_item.product
-        order_details.create!(
-          product_name: product.name,
-          product_price: product.price,
-          quantity: cart_item.quantity,
-          subtotal: cart_item.subtotal
-        )
-      end
+      create_order_details(cart)
+      create_order_promotion(cart)
       cart.destroy!
     end
     true
   rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotDestroyed
     false
+  end
+
+  private
+
+  def create_order_details(cart)
+    cart.cart_items.includes(:product).find_each do |cart_item|
+      product = cart_item.product
+      order_details.create!(
+        product_name: product.name,
+        product_price: product.price,
+        quantity: cart_item.quantity,
+        subtotal: cart_item.subtotal
+      )
+    end
+  end
+
+  def create_order_promotion(cart)
+    return unless cart.promotion_code
+
+    create_order_promotion!(
+      code: cart.promotion_code.code,
+      amount: cart.promotion_code.amount
+    )
   end
 end

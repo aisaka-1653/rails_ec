@@ -4,7 +4,7 @@
       <%= image_tag product.image, class: "card-img-top product-image product-thumbnail" if product.image.attached? %>
       <div class="card-body p-4">
         <div class="text-center">
-          <h5 class="fw-bolder"><%= product.name %></h5>
+          <h5 class="fw-semibold"><%= product.name %></h5>
           <%= number_to_currency(product.price) %>
         </div>
       </div>

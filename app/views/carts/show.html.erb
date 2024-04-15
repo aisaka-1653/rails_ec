@@ -30,19 +30,26 @@
             <%= link_to "削除", cart_path(cart_item, product_id: cart_item.product_id), data: { turbo_method: :delete }, class: "delete-btn small px-1" %>
           </li>
         <% end %>
+        <% if @promotion_code %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <h6 class="my-0 text-success me-auto"><%= @promotion_code.code %></h6>
+            <span class="text-muted me-2"><%= number_to_currency(@promotion_code.amount, format: "-%n%u") %></span>
+            <%= link_to "削除", remove_promotion_codes_path, data: { turbo_method: :delete }, class: "delete-btn small px-1" %>
+          </li>
+        <% end %>
         <li class="list-group-item d-flex justify-content-between">
           <span><%= t ".cart.total_price" %></span>
           <strong><%= number_to_currency(current_cart.total_price) %></strong>
         </li>
       </ul>
-      <form class="card p-2">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="<%= t ".promotion.promo_code_hint" %>">
+      <div class="card p-2">
+        <%= form_with url: apply_promotion_codes_path, method: :post, class: "input-group" do |f| %>
+          <%= f.text_field :code, class: "form-control", placeholder: t(".promotion.promo_code_hint") %>
           <div class="input-group-append">
-            <button type="submit" class="btn btn-secondary"><%= t ".promotion.redeem" %></button>
+            <%= f.submit t(".promotion.redeem"), class: "btn btn-secondary" %>
           </div>
-        </div>
-      </form>
+        <% end %>
+      </div>
     </div>
     <div class="col-md-8 order-md-1">
       <h4 class="text-muted mb-3"><%= t ".address.billing_address" %></h4>

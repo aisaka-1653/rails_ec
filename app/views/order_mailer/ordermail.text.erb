@@ -8,5 +8,8 @@ Apparel Shopでのご注文
 <% @order_details.each do |item| %>
 <%= item.product_name %> | <%= number_to_currency(item.product_price) %> | <%= item.quantity %> | <%= number_to_currency(item.subtotal) %>
 <% end %>
+<% if @order_promotion %>
+<%= @order_promotion.code %> | <%= number_to_currency(@order_promotion.amount, format: "-%n%u") %> | 1 | <%= number_to_currency(@order_promotion.amount, format: "-%n%u") %>
+<% end %>
 
 合計金額: <%= number_to_currency(@order.total_price) %>
